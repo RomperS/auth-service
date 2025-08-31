@@ -3,5 +3,5 @@ package com.olo.authservice.domain.ports.inbound.users;
 import com.olo.authservice.domain.results.UserResult;
 
 public interface GetUserByIdPort {
-    UserResult getUserById(Long id);
+    UserResult getUserById(Long userId);
 }

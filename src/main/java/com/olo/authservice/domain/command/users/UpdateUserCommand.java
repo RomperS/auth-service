@@ -1,7 +1,7 @@
 package com.olo.authservice.domain.command.users;
 
 public record UpdateUserCommand(
-        Long targetId,
+        Long userId,
         String username,
         String email,
         String password
