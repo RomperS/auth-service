@@ -1,5 +1,6 @@
 package com.olo.authservice.domain.models.permissions;
 
+import com.olo.authservice.domain.exceptions.permissions.InvalidPermissionValueException;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -7,8 +8,10 @@ import lombok.RequiredArgsConstructor;
 @Getter
 public enum Title {
     PRINCIPAL(Role.SUPER_ADMIN),
+
     SECRETARY(Role.ADMIN),
     LIBRARIAN(Role.ADMIN),
+    COORDINATOR(Role.ADMIN),
 
     TUTOR(Role.TEACHER),
     HOMEROOM_TEACHER(Role.TEACHER),
@@ -29,4 +32,12 @@ public enum Title {
     SOCIAL_WORKER(Role.COUNSELOR);
 
     private final Role role;
+
+    public Title fromString(String title){
+        try {
+            return Title.valueOf(title);
+        }catch (IllegalArgumentException e){
+            throw new InvalidPermissionValueException("Invalid title value");
+        }
+    }
 }
