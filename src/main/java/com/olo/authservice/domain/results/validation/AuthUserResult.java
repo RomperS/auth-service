@@ -1,16 +1,12 @@
 package com.olo.authservice.domain.results.validation;
 
+import com.olo.authservice.domain.results.tokens.AccessTokenResult;
+
 import java.time.Instant;
 
 public record AuthUserResult(
         String refreshToken,
         Instant expireAt,
-        AccessToken accessToken
+        AccessTokenResult accessToken
 ) {
-
-    public record AccessToken(
-            String token,
-            Instant expireAt
-    ) {
-    }
 }
