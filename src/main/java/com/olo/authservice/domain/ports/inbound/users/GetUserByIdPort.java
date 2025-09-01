@@ -1,6 +1,6 @@
 package com.olo.authservice.domain.ports.inbound.users;
 
-import com.olo.authservice.domain.results.UserResult;
+import com.olo.authservice.domain.results.users.UserResult;
 
 public interface GetUserByIdPort {
     UserResult getUserById(Long userId);

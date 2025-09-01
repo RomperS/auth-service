@@ -1,4 +1,4 @@
-package com.olo.authservice.domain.command.users;
+package com.olo.authservice.domain.command.permissions;
 
 import com.olo.authservice.domain.exceptions.permissions.InvalidPermissionValueException;
 import com.olo.authservice.domain.models.permissions.Role;
@@ -8,13 +8,12 @@ public record PermissionCommand(
         Title title,
         Role role
 ) {
-    public Void validatePermission() {
+    public void validatePermission() {
         if (!title.getRole().equals(role)) {
             throw new InvalidPermissionValueException(
                     "Invalid permission: title does not correspond to role"
             );
         }
-        return null;
     }
 }
 

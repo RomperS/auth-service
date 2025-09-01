@@ -1,4 +1,4 @@
-package com.olo.authservice.domain.results;
+package com.olo.authservice.domain.results.permissions;
 
 import com.olo.authservice.domain.exceptions.permissions.InvalidPermissionValueException;
 import com.olo.authservice.domain.models.permissions.Role;
