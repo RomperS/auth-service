@@ -1,8 +1,8 @@
 package com.olo.authservice.domain.command.permissions;
 
-import com.olo.authservice.domain.exceptions.permissions.InvalidPermissionValueException;
-import com.olo.authservice.domain.models.permissions.Role;
-import com.olo.authservice.domain.models.permissions.Title;
+import com.olo.exceptions.permissions.InvalidPermissionValueException;
+import com.olo.permissions.Role;
+import com.olo.permissions.Title;
 
 public record PermissionCommand(
         Title title,

@@ -1,7 +1,7 @@
 package com.olo.authservice.domain.models;
 
-import com.olo.authservice.domain.models.permissions.Role;
-import com.olo.authservice.domain.models.permissions.Title;
+import com.olo.permissions.Role;
+import com.olo.permissions.Title;
 
 import java.util.List;
 

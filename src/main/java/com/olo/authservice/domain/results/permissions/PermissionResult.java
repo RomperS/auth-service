@@ -1,8 +1,8 @@
 package com.olo.authservice.domain.results.permissions;
 
-import com.olo.authservice.domain.exceptions.permissions.InvalidPermissionValueException;
-import com.olo.authservice.domain.models.permissions.Role;
-import com.olo.authservice.domain.models.permissions.Title;
+import com.olo.exceptions.permissions.InvalidPermissionValueException;
+import com.olo.permissions.Role;
+import com.olo.permissions.Title;
 
 public record PermissionResult(
         Title title,
@@ -12,8 +12,6 @@ public record PermissionResult(
         if (title.getRole().equals(role)) {
             return role + ":" + title;
         }
-        throw new InvalidPermissionValueException(
-                "Invalid permission: title does not correspond to role"
-        );
+        throw new InvalidPermissionValueException("Invalid permission: title does not correspond to role");
     }
 }
