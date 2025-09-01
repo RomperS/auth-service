@@ -9,7 +9,6 @@ public record UserResult(
         Long id,
         String username,
         String email,
-        String password,
         Boolean accountLocked,
         PermissionsResult permissions
 ) {
