@@ -10,7 +10,7 @@ import java.time.Instant;
 import java.util.List;
 
 @RequiredArgsConstructor
-public class GetActiveUserTokensUseCase implements GetActiveUserTokensPort {
+public class GetActiveUserTokensImpl implements GetActiveUserTokensPort {
 
     private final TokenRepositoryPort tokenRepositoryPort;
 

@@ -9,13 +9,14 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 
 @RequiredArgsConstructor
-public class GetAllUsersUseCase implements GetAllUsersByTitlePort {
+public class GetAllUsersByTitleImpl implements GetAllUsersByTitlePort {
 
     private final UserRepositoryPort userRepositoryPort;
 
     @Override
     public List<UserResult> getAllUsersByTitle(Title title) {
-        return userRepositoryPort.findAll().stream()
+        return userRepositoryPort.findUsersByTitle(title)
+                .stream()
                 .map(user ->
                         new UserResult(
                                 user.id(),

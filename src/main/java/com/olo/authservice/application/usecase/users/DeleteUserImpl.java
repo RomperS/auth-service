@@ -7,7 +7,7 @@ import com.olo.authservice.domain.ports.outbound.UserRepositoryPort;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class DeleteUserUseCase implements DeleteUserPort {
+public class DeleteUserImpl implements DeleteUserPort {
 
     private final UserRepositoryPort userRepositoryPort;
 

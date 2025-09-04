@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
-public class GetUserPermissionsUseCase implements GetUserPermissionsPort {
+public class GetUserPermissionsImpl implements GetUserPermissionsPort {
 
     private final UserRepositoryPort userRepositoryPort;
 

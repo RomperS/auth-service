@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 
 @RequiredArgsConstructor
-public class GetPermissionsByTokenUseCase implements GetPermissionsByTokenPort {
+public class GetPermissionsByTokenImpl implements GetPermissionsByTokenPort {
 
     private final JwtServicePort jwtServicePort;
     private final PermissionService permissionService;

@@ -11,7 +11,7 @@ import com.olo.authservice.domain.results.validation.AuthUserResult;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class SignupUseCase implements SignupPort {
+public class SignupImpl implements SignupPort {
 
     private final UserService userService;
     private final TokenService tokenService;

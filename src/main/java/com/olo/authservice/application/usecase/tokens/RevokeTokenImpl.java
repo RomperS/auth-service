@@ -7,7 +7,7 @@ import com.olo.authservice.domain.ports.outbound.TokenRepositoryPort;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class RevokeTokenUseCase implements RevokeTokenPort {
+public class RevokeTokenImpl implements RevokeTokenPort {
 
     private final TokenRepositoryPort tokenRepositoryPort;
 

@@ -7,7 +7,7 @@ import com.olo.authservice.domain.results.validation.ValidateTokenResult;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class ValidateTokenUseCase implements ValidateTokenPort {
+public class ValidateTokenImpl implements ValidateTokenPort {
 
     private final JwtServicePort jwtServicePort;
     private final UserRepositoryPort userRepositoryPort;

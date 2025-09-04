@@ -10,7 +10,7 @@ import org.springframework.security.core.token.TokenService;
 import java.time.Instant;
 
 @RequiredArgsConstructor
-public class GenerateAccessTokenUseCase implements GenerateAccessTokenPort {
+public class GenerateAccessTokenImpl implements GenerateAccessTokenPort {
 
     private final TokenRepositoryPort tokenRepositoryPort;
     private final JwtServicePort jwtServicePort;

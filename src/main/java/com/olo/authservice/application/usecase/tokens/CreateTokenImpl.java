@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 import java.time.Instant;
 
 @RequiredArgsConstructor
-public class CreateTokenUseCase implements CreateTokenPort {
+public class CreateTokenImpl implements CreateTokenPort {
 
     private final TokenRepositoryPort tokenRepositoryPort;
     private final JwtServicePort jwtServicePort;

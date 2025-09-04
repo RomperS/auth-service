@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
-public class CreateUserUseCase implements CreateUserPort {
+public class CreateUserImpl implements CreateUserPort {
 
     private final UserRepositoryPort userRepositoryPort;
     private final PasswordEncoderPort passwordEncoderPort;
