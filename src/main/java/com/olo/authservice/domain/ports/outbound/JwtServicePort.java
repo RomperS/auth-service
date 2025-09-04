@@ -1,9 +1,5 @@
 package com.olo.authservice.domain.ports.outbound;
 
-import jakarta.validation.constraints.NotNull;
-
-import java.time.Instant;
-
 public interface JwtServicePort {
     String generateRefreshToken(String username);
     long getRefreshTokenExpiration();
@@ -11,4 +7,6 @@ public interface JwtServicePort {
     Long getUserId(String token);
     String getJti(String token);
     String generateAccessToken();
+    boolean validateToken(String token);
+    String getTokenType(String token);
 }
