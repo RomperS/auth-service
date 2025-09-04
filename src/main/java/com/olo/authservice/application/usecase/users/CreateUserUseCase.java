@@ -23,25 +23,27 @@ public class CreateUserUseCase implements CreateUserPort {
 
     @Override
     public UserResult createUser(CreateUserCommand command) {
-        if (userRepositoryPort.existByUsername(command.username())){
+        CreateUserCommand createUserCommand = CreateUserCommand.of(command);
+
+        if (userRepositoryPort.existByUsername(createUserCommand.username())){
             throw new UsernameTakenException("Username is already taken");
         }
-        if (userRepositoryPort.existByEmail(command.email())){
+        if (userRepositoryPort.existByEmail(createUserCommand.email())){
             throw new EmailAlreadyExistsException(
-                    String.format("Email '%s' is already registered.", command.email())
+                    String.format("Email '%s' is already registered.", createUserCommand.email())
             );
         }
 
         List<Role> roles = new ArrayList<>();
-        roles.add(command.role());
+        roles.add(createUserCommand.role());
         List<Title> titles = new ArrayList<>();
-        titles.add(command.title());
+        titles.add(createUserCommand.title());
 
         User user = new User(
                 null,
-                command.username(),
-                command.email(),
-                passwordEncoderPort.encode(command.password()),
+                createUserCommand.username(),
+                createUserCommand.email(),
+                passwordEncoderPort.encode(createUserCommand.password()),
                 false,
                 roles,
                 titles
