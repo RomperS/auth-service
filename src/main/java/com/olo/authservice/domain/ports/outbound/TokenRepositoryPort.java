@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface TokenRepositoryPort {
-    Token save(Token tokenModel);
-    List<Token> findAllByUsername(String username);
+
+    Token save(Token token);
+
     Optional<Token> findByJti(String jti);
+    List<Token> findAllByUsername(String username);
 }

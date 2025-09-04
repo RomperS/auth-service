@@ -1,12 +1,16 @@
 package com.olo.authservice.domain.ports.outbound;
 
 public interface JwtServicePort {
+
+    String generateAccessToken();
     String generateRefreshToken(String username);
-    long getRefreshTokenExpiration();
-    Long getAccessTokenExpiration();
+
+    boolean validateToken(String token);
+
     Long getUserId(String token);
     String getJti(String token);
-    String generateAccessToken();
-    boolean validateToken(String token);
     String getTokenType(String token);
+
+    Long getAccessTokenExpiration();
+    long getRefreshTokenExpiration();
 }
