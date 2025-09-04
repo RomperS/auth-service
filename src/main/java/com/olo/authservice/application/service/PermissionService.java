@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 
 @RequiredArgsConstructor
-public class PermissionsService implements GetUserPermissionsPort, RevokeUserPermissionsPort, AssignUserPermissionsPort {
+public class PermissionService implements GetUserPermissionsPort, RevokeUserPermissionsPort, AssignUserPermissionsPort {
 
     private final GetUserPermissionsPort getUserPermissionsPort;
     private final RevokeUserPermissionsPort revokeUserPermissionsPort;
