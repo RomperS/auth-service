@@ -18,6 +18,7 @@ public class UserService implements
         GetAllUsersByTitlePort,
         GetAllUsersPort,
         GetUserByIdPort,
+        GetUserByUsernamePot,
         LockUserPort,
         UnlockUserPort,
         UpdateUserPort {
@@ -28,6 +29,7 @@ public class UserService implements
     private final GetAllUsersByTitlePort getAllUsersByTitlePort;
     private final GetAllUsersPort getAllUsersPort;
     private final GetUserByIdPort getUserByIdPort;
+    private final GetUserByUsernamePot getUserByUsernamePort;
     private final LockUserPort lockUserPort;
     private final UnlockUserPort unlockUserPort;
     private final UpdateUserPort updateUserPort;
@@ -60,6 +62,11 @@ public class UserService implements
     @Override
     public UserResult getUserById(Long userId) {
         return getUserByIdPort.getUserById(userId);
+    }
+
+    @Override
+    public UserResult getUserByUsername(String username) {
+        return getUserByUsernamePort.getUserByUsername(username);
     }
 
     @Override
