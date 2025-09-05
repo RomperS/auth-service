@@ -1,5 +1,6 @@
 package com.olo.authservice.application.usecase.tokens;
 
+import com.olo.authservice.domain.exceptions.tokens.InvalidTokenException;
 import com.olo.authservice.domain.exceptions.tokens.TokenAlreadyRevokedException;
 import com.olo.authservice.domain.exceptions.tokens.TokenNotFoundException;
 import com.olo.authservice.domain.models.Token;
@@ -27,7 +28,13 @@ public class GenerateAccessTokenImpl implements GenerateAccessTokenPort {
             throw new TokenAlreadyRevokedException("Token is revoked");
         }
 
-        String accessToken = jwtServicePort.generateAccessToken(refreshToken.refreshToken());
+        if (jwtServicePort.validateToken(refreshToken.refreshToken())){
+            throw new InvalidTokenException("Token is valid");
+        }
+
+        String username = jwtServicePort.getUsername(refreshToken.refreshToken());
+
+        String accessToken = jwtServicePort.generateAccessToken(username);
 
         Instant expireAt = Instant.now().plusMillis(jwtServicePort.getAccessTokenExpiration());
 
