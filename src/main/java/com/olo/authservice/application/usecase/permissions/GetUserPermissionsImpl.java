@@ -3,7 +3,6 @@ package com.olo.authservice.application.usecase.permissions;
 import com.olo.authservice.domain.exceptions.users.UserNotFoundException;
 import com.olo.authservice.domain.models.User;
 import com.olo.authservice.domain.ports.inbound.permissions.GetUserPermissionsPort;
-import com.olo.authservice.domain.ports.inbound.users.GetAllUsersByRolePort;
 import com.olo.authservice.domain.ports.outbound.UserRepositoryPort;
 import com.olo.authservice.domain.results.permissions.PermissionResult;
 import com.olo.permissions.Role;
