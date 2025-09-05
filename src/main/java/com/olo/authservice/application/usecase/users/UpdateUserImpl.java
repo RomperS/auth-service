@@ -6,16 +6,16 @@ import com.olo.authservice.domain.exceptions.users.UserNotFoundException;
 import com.olo.authservice.domain.exceptions.users.UsernameTakenException;
 import com.olo.authservice.domain.models.User;
 import com.olo.authservice.domain.ports.inbound.users.UpdateUserPort;
+import com.olo.authservice.domain.ports.outbound.PasswordEncoderPort;
 import com.olo.authservice.domain.ports.outbound.UserRepositoryPort;
 import com.olo.authservice.domain.results.users.UserResult;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 @RequiredArgsConstructor
 public class UpdateUserImpl implements UpdateUserPort {
 
     private final UserRepositoryPort userRepositoryPort;
-    private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoderPort passwordEncoderPort;
 
     @Override
     public UserResult updateUser(UpdateUserCommand command) {
@@ -44,7 +44,7 @@ public class UpdateUserImpl implements UpdateUserPort {
 
         String newPassword = command.password();
         if (newPassword != null) {
-            newPassword = passwordEncoder.encode(newPassword);
+            newPassword = passwordEncoderPort.encode(newPassword);
         } else {
             newPassword = user.password();
         }
