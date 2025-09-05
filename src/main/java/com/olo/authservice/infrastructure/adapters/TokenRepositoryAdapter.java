@@ -9,11 +9,13 @@ import com.olo.authservice.infrastructure.mappers.TokenMapper;
 import com.olo.authservice.infrastructure.repositories.JpaTokenRepository;
 import com.olo.authservice.infrastructure.repositories.JpaUserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
+@Component
 public class TokenRepositoryAdapter implements TokenRepositoryPort {
 
     private final JpaUserRepository jpaUserRepository;

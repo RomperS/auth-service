@@ -8,12 +8,13 @@ import com.olo.authservice.infrastructure.repositories.JpaUserRepository;
 import com.olo.permissions.Role;
 import com.olo.permissions.Title;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
+@Component
 public class UserRepositoryAdapter implements UserRepositoryPort {
 
     private final JpaUserRepository jpaUserRepository;
