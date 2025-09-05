@@ -1,5 +1,6 @@
 package com.olo.authservice.application.usecase.users;
 
+import com.olo.authservice.common.anotations.CustomTransactional;
 import com.olo.authservice.domain.command.users.UpdateUserCommand;
 import com.olo.authservice.domain.exceptions.users.EmailAlreadyExistsException;
 import com.olo.authservice.domain.exceptions.users.UserNotFoundException;
@@ -18,6 +19,7 @@ public class UpdateUserImpl implements UpdateUserPort {
     private final PasswordEncoderPort passwordEncoderPort;
 
     @Override
+    @CustomTransactional
     public UserResult updateUser(UpdateUserCommand command) {
         User user = userRepositoryPort.findById(command.userId())
                 .orElseThrow(() -> new UserNotFoundException("User not found"));

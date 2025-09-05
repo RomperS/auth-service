@@ -1,5 +1,6 @@
 package com.olo.authservice.application.usecase.tokens;
 
+import com.olo.authservice.common.anotations.CustomTransactional;
 import com.olo.authservice.domain.exceptions.tokens.TokenNotFoundException;
 import com.olo.authservice.domain.models.Token;
 import com.olo.authservice.domain.ports.inbound.tokens.RevokeTokenPort;
@@ -12,6 +13,7 @@ public class RevokeTokenImpl implements RevokeTokenPort {
     private final TokenRepositoryPort tokenRepositoryPort;
 
     @Override
+    @CustomTransactional
     public void revokeToken(String jti) {
         Token token = tokenRepositoryPort.findByJti(jti).orElseThrow(() -> new TokenNotFoundException("Token not found by jti"));
 

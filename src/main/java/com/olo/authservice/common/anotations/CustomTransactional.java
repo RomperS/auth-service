@@ -1,4 +1,4 @@
-package com.olo.authservice.common.anotation;
+package com.olo.authservice.common.anotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,5 +1,6 @@
 package com.olo.authservice.application.usecase.permissions;
 
+import com.olo.authservice.common.anotations.CustomTransactional;
 import com.olo.authservice.domain.command.permissions.PermissionCommand;
 import com.olo.authservice.domain.exceptions.users.UserNotFoundException;
 import com.olo.authservice.domain.models.User;
@@ -22,6 +23,7 @@ public class AssignUserPermissionsImpl implements AssignUserPermissionsPort {
     private final UserRepositoryPort userRepositoryPort;
 
     @Override
+    @CustomTransactional
     public UserResult assignUserPermissions(PermissionCommand command, Long userId) {
         User user = userRepositoryPort.findById(userId)
                 .orElseThrow(() -> new UserNotFoundException("User not found"));

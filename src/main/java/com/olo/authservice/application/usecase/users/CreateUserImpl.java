@@ -1,5 +1,6 @@
 package com.olo.authservice.application.usecase.users;
 
+import com.olo.authservice.common.anotations.CustomTransactional;
 import com.olo.authservice.domain.command.users.CreateUserCommand;
 import com.olo.authservice.domain.exceptions.users.EmailAlreadyExistsException;
 import com.olo.authservice.domain.exceptions.users.UsernameTakenException;
@@ -22,6 +23,7 @@ public class CreateUserImpl implements CreateUserPort {
     private final PasswordEncoderPort passwordEncoderPort;
 
     @Override
+    @CustomTransactional
     public UserResult createUser(CreateUserCommand command) {
         CreateUserCommand createUserCommand = CreateUserCommand.of(command);
 

@@ -8,6 +8,7 @@ import com.olo.authservice.infrastructure.entities.UserEntity;
 import com.olo.authservice.infrastructure.mappers.TokenMapper;
 import com.olo.authservice.infrastructure.repositories.JpaTokenRepository;
 import com.olo.authservice.infrastructure.repositories.JpaUserRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +23,7 @@ public class TokenRepositoryAdapter implements TokenRepositoryPort {
     private final JpaTokenRepository jpaTokenRepository;
 
     @Override
+    @Transactional
     public Token save(Token token) {
         TokenEntity tokenEntity = TokenMapper.modelToEntity(token);
         UserEntity user = jpaUserRepository.findById(token.userId()).orElseThrow(() ->

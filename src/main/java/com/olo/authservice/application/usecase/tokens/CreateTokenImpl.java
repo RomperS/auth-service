@@ -1,5 +1,6 @@
 package com.olo.authservice.application.usecase.tokens;
 
+import com.olo.authservice.common.anotations.CustomTransactional;
 import com.olo.authservice.domain.models.Token;
 import com.olo.authservice.domain.ports.inbound.tokens.CreateTokenPort;
 import com.olo.authservice.domain.ports.outbound.JwtServicePort;
@@ -16,6 +17,7 @@ public class CreateTokenImpl implements CreateTokenPort {
     private final JwtServicePort jwtServicePort;
 
     @Override
+    @CustomTransactional
     public TokenResult createToken(String username) {
         String token = jwtServicePort.generateRefreshToken(username);
         Instant expireAt = Instant.now().plusMillis(jwtServicePort.getRefreshTokenExpiration());

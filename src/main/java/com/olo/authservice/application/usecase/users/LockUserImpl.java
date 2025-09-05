@@ -1,5 +1,6 @@
 package com.olo.authservice.application.usecase.users;
 
+import com.olo.authservice.common.anotations.CustomTransactional;
 import com.olo.authservice.domain.exceptions.users.SuperUserActionNotAllowedException;
 import com.olo.authservice.domain.exceptions.users.UserNotFoundException;
 import com.olo.authservice.domain.models.User;
@@ -14,6 +15,7 @@ public class LockUserImpl implements LockUserPort {
     private final UserRepositoryPort userRepositoryPort;
 
     @Override
+    @CustomTransactional
     public void lockUser(Long userId) {
         User user = userRepositoryPort.findById(userId).orElseThrow(() -> new UserNotFoundException("User not found"));
 

@@ -1,6 +1,7 @@
 package com.olo.authservice.application.usecase.validation;
 
 import com.olo.authservice.application.service.TokenService;
+import com.olo.authservice.common.anotations.CustomTransactional;
 import com.olo.authservice.domain.command.validation.AuthUserCommand;
 import com.olo.authservice.domain.exceptions.users.UserNotFoundException;
 import com.olo.authservice.domain.exceptions.validation.InvalidCredentialsException;
@@ -21,6 +22,7 @@ public class LogoutImpl implements LogoutPort {
     private final PasswordEncoderPort passwordEncoderPort;
 
     @Override
+    @CustomTransactional
     public void logout(AuthUserCommand command) {
         User user = userRepositoryPort.findByUsername(command.username()).orElseThrow(() -> new UserNotFoundException("User not found"));
 

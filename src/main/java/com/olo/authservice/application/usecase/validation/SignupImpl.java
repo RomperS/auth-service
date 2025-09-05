@@ -2,6 +2,7 @@ package com.olo.authservice.application.usecase.validation;
 
 import com.olo.authservice.application.service.TokenService;
 import com.olo.authservice.application.service.UserService;
+import com.olo.authservice.common.anotations.CustomTransactional;
 import com.olo.authservice.domain.command.users.CreateUserCommand;
 import com.olo.authservice.domain.ports.inbound.validation.SignupPort;
 import com.olo.authservice.domain.results.tokens.AccessTokenResult;
@@ -17,6 +18,7 @@ public class SignupImpl implements SignupPort {
     private final TokenService tokenService;
 
     @Override
+    @CustomTransactional
     public AuthUserResult signup(CreateUserCommand command) {
 
         UserResult userResult = userService.createUser(command);

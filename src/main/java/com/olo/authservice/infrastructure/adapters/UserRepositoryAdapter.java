@@ -7,6 +7,7 @@ import com.olo.authservice.infrastructure.mappers.UserMapper;
 import com.olo.authservice.infrastructure.repositories.JpaUserRepository;
 import com.olo.permissions.Role;
 import com.olo.permissions.Title;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -30,6 +31,7 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
     }
 
     @Override
+    @Transactional
     public User save(User user) {
         UserEntity userEntity = UserMapper.modelToEntity(user);
         return UserMapper.entityToModel(jpaUserRepository.save(userEntity));
