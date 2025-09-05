@@ -2,7 +2,6 @@ package com.olo.authservice.application.usecase.validation;
 
 import com.olo.authservice.domain.ports.inbound.validation.ValidateTokenPort;
 import com.olo.authservice.domain.ports.outbound.JwtServicePort;
-import com.olo.authservice.domain.ports.outbound.UserRepositoryPort;
 import com.olo.authservice.domain.results.validation.ValidateTokenResult;
 import lombok.RequiredArgsConstructor;
 
@@ -10,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 public class ValidateTokenImpl implements ValidateTokenPort {
 
     private final JwtServicePort jwtServicePort;
-    private final UserRepositoryPort userRepositoryPort;
 
     @Override
     public ValidateTokenResult validateToken(String token) {
