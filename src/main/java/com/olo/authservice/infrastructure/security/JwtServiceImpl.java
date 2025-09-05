@@ -2,9 +2,11 @@ package com.olo.authservice.infrastructure.security;
 
 import com.olo.authservice.domain.exceptions.tokens.InvalidTokenException;
 import com.olo.authservice.domain.exceptions.tokens.MissingTokenException;
+import com.olo.authservice.domain.exceptions.tokens.TokenNotFoundException;
 import com.olo.authservice.domain.models.Token;
 import com.olo.authservice.domain.ports.outbound.JwtServicePort;
-import com.olo.authservice.domain.ports.outbound.TokenRepositoryPort;
+import com.olo.authservice.infrastructure.entities.TokenEntity;
+import com.olo.authservice.infrastructure.repositories.JpaTokenRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
@@ -25,7 +27,7 @@ import java.util.function.Function;
 @Component
 public class JwtServiceImpl implements JwtServicePort {
 
-    private final TokenRepositoryPort tokenRepository;
+    private final JpaTokenRepository jpaTokenRepository;
     private final UserDetailsService userDetailsService;
 
     @Value("${jwt.secret.key}")
@@ -185,7 +187,7 @@ public class JwtServiceImpl implements JwtServicePort {
 
     protected boolean isTokenRevoked(String token) {
         String jti = extractJti(token);
-        Optional<Token> tokenDomain = tokenRepository.findByJti(jti);
+        Optional<TokenEntity> tokenDomain = jpaTokenRepository.findByJti(jti);
         return tokenDomain.isPresent() && tokenDomain.get().isRevoked();
     }
 
