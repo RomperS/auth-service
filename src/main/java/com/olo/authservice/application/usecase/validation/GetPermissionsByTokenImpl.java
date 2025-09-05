@@ -1,7 +1,7 @@
-package com.olo.authservice.application.usecase.permissions;
+package com.olo.authservice.application.usecase.validation;
 
 import com.olo.authservice.application.service.PermissionService;
-import com.olo.authservice.domain.ports.inbound.permissions.GetPermissionsByTokenPort;
+import com.olo.authservice.domain.ports.inbound.validation.GetPermissionsByTokenPort;
 import com.olo.authservice.domain.ports.inbound.validation.ValidateTokenPort;
 import com.olo.authservice.domain.ports.outbound.JwtServicePort;
 import com.olo.authservice.domain.results.permissions.PermissionResult;

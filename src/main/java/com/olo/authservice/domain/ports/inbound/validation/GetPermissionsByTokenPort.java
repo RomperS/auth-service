@@ -1,4 +1,4 @@
-package com.olo.authservice.domain.ports.inbound.permissions;
+package com.olo.authservice.domain.ports.inbound.validation;
 
 import com.olo.authservice.domain.results.validation.TokenPermissionsResult;
 

@@ -3,23 +3,20 @@ package com.olo.authservice.application.service;
 import com.olo.authservice.application.usecase.permissions.*;
 import com.olo.authservice.domain.command.permissions.PermissionCommand;
 import com.olo.authservice.domain.ports.inbound.permissions.AssignUserPermissionsPort;
-import com.olo.authservice.domain.ports.inbound.permissions.GetPermissionsByTokenPort;
 import com.olo.authservice.domain.ports.inbound.permissions.GetUserPermissionsPort;
 import com.olo.authservice.domain.ports.inbound.permissions.RevokeUserPermissionsPort;
 import com.olo.authservice.domain.results.permissions.PermissionResult;
 import com.olo.authservice.domain.results.users.UserResult;
-import com.olo.authservice.domain.results.validation.TokenPermissionsResult;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
 @RequiredArgsConstructor
-public class PermissionService implements GetUserPermissionsPort, RevokeUserPermissionsPort, AssignUserPermissionsPort, GetPermissionsByTokenPort {
+public class PermissionService implements GetUserPermissionsPort, RevokeUserPermissionsPort, AssignUserPermissionsPort {
 
     private final GetUserPermissionsImpl getUserPermissionsImpl;
     private final RevokeUserPermissionsImpl revokeUserPermissionsImpl;
     private final AssignUserPermissionsImpl assignUserPermissionsImpl;
-    private final GetPermissionsByTokenPort getPermissionsByTokenPort;
 
     @Override
     public List<PermissionResult> getUserPermissions(Long userId) {
@@ -34,10 +31,5 @@ public class PermissionService implements GetUserPermissionsPort, RevokeUserPerm
     @Override
     public UserResult revokeUserPermissions(PermissionCommand command, Long userId) {
         return revokeUserPermissionsImpl.revokeUserPermissions(command, userId);
-    }
-
-    @Override
-    public TokenPermissionsResult getPermissionsByToken(String token) {
-        return getPermissionsByTokenPort.getPermissionsByToken(token);
     }
 }
