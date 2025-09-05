@@ -18,7 +18,7 @@ public class UserService implements
         GetAllUsersByTitlePort,
         GetAllUsersPort,
         GetUserByIdPort,
-        GetUserByUsernamePot,
+        GetUserByUsernamePort,
         LockUserPort,
         UnlockUserPort,
         UpdateUserPort {
@@ -29,7 +29,7 @@ public class UserService implements
     private final GetAllUsersByTitlePort getAllUsersByTitlePort;
     private final GetAllUsersPort getAllUsersPort;
     private final GetUserByIdPort getUserByIdPort;
-    private final GetUserByUsernamePot getUserByUsernamePort;
+    private final GetUserByUsernamePort getUserByUsernamePort;
     private final LockUserPort lockUserPort;
     private final UnlockUserPort unlockUserPort;
     private final UpdateUserPort updateUserPort;

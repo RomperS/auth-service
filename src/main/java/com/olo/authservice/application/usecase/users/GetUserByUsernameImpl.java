@@ -2,13 +2,13 @@ package com.olo.authservice.application.usecase.users;
 
 import com.olo.authservice.domain.exceptions.users.UserNotFoundException;
 import com.olo.authservice.domain.models.User;
-import com.olo.authservice.domain.ports.inbound.users.GetUserByUsernamePot;
+import com.olo.authservice.domain.ports.inbound.users.GetUserByUsernamePort;
 import com.olo.authservice.domain.ports.outbound.UserRepositoryPort;
 import com.olo.authservice.domain.results.users.UserResult;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class GetUserByUsernameImpl implements GetUserByUsernamePot {
+public class GetUserByUsernameImpl implements GetUserByUsernamePort {
 
     private final UserRepositoryPort userRepositoryPort;
 
