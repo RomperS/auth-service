@@ -2,8 +2,6 @@ package com.olo.authservice.infrastructure.security;
 
 import com.olo.authservice.domain.exceptions.tokens.InvalidTokenException;
 import com.olo.authservice.domain.exceptions.tokens.MissingTokenException;
-import com.olo.authservice.domain.exceptions.tokens.TokenNotFoundException;
-import com.olo.authservice.domain.models.Token;
 import com.olo.authservice.domain.ports.outbound.JwtServicePort;
 import com.olo.authservice.infrastructure.entities.TokenEntity;
 import com.olo.authservice.infrastructure.repositories.JpaTokenRepository;

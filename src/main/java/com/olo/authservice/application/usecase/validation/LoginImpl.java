@@ -1,18 +1,15 @@
 package com.olo.authservice.application.usecase.validation;
 
 import com.olo.authservice.application.service.TokenService;
-import com.olo.authservice.application.service.UserService;
 import com.olo.authservice.domain.command.validation.AuthUserCommand;
 import com.olo.authservice.domain.exceptions.users.UserNotFoundException;
 import com.olo.authservice.domain.exceptions.validation.InvalidCredentialsException;
-import com.olo.authservice.domain.models.Token;
 import com.olo.authservice.domain.models.User;
 import com.olo.authservice.domain.ports.inbound.validation.LoginPort;
 import com.olo.authservice.domain.ports.outbound.PasswordEncoderPort;
 import com.olo.authservice.domain.ports.outbound.UserRepositoryPort;
 import com.olo.authservice.domain.results.tokens.AccessTokenResult;
 import com.olo.authservice.domain.results.tokens.TokenResult;
-import com.olo.authservice.domain.results.users.UserResult;
 import com.olo.authservice.domain.results.validation.AuthUserResult;
 import lombok.RequiredArgsConstructor;
 
