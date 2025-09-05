@@ -1,0 +1,12 @@
+package com.olo.authservice.domain.exceptions.tokens;
+
+import com.olo.exceptions.DomainException;
+
+public class MissingTokenException extends DomainException {
+    public MissingTokenException(String message) {
+        super(message);
+    }
+    public MissingTokenException(String message, Throwable cause) {
+        super(message, cause);
+    }
+}
