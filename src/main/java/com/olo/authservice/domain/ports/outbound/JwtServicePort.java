@@ -2,12 +2,13 @@ package com.olo.authservice.domain.ports.outbound;
 
 public interface JwtServicePort {
 
-    String generateAccessToken(String refreshToken);
+    String generateAccessToken(String username);
     String generateRefreshToken(String username);
 
     boolean validateToken(String token);
 
     Long getUserId(String token);
+    String getUsername(String token);
     String getJti(String token);
     String getTokenType(String token);
 
