@@ -1,11 +1,13 @@
 package com.olo.authservice.application.usecase.tokens;
 
+import com.olo.authservice.domain.exceptions.tokens.TokenAlreadyRevokedException;
+import com.olo.authservice.domain.exceptions.tokens.TokenNotFoundException;
+import com.olo.authservice.domain.models.Token;
 import com.olo.authservice.domain.ports.inbound.tokens.GenerateAccessTokenPort;
 import com.olo.authservice.domain.ports.outbound.JwtServicePort;
 import com.olo.authservice.domain.ports.outbound.TokenRepositoryPort;
 import com.olo.authservice.domain.results.tokens.AccessTokenResult;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.token.TokenService;
 
 import java.time.Instant;
 
@@ -17,7 +19,16 @@ public class GenerateAccessTokenImpl implements GenerateAccessTokenPort {
 
     @Override
     public AccessTokenResult generateAccessToken(String token) {
-        String accessToken = jwtServicePort.generateAccessToken();
+        String jti = jwtServicePort.getJti(token);
+
+        Token refreshToken = tokenRepositoryPort.findByJti(jti).orElseThrow(() -> new TokenNotFoundException("Token not found"));
+
+        if (refreshToken.isRevoked()){
+            throw new TokenAlreadyRevokedException("Token is revoked");
+        }
+
+        String accessToken = jwtServicePort.generateAccessToken(refreshToken.refreshToken());
+
         Instant expireAt = Instant.now().plusMillis(jwtServicePort.getAccessTokenExpiration() * 100L);
 
         return new AccessTokenResult(accessToken, expireAt);
