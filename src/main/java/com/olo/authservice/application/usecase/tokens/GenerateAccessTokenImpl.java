@@ -29,7 +29,7 @@ public class GenerateAccessTokenImpl implements GenerateAccessTokenPort {
 
         String accessToken = jwtServicePort.generateAccessToken(refreshToken.refreshToken());
 
-        Instant expireAt = Instant.now().plusMillis(jwtServicePort.getAccessTokenExpiration() * 100L);
+        Instant expireAt = Instant.now().plusMillis(jwtServicePort.getAccessTokenExpiration());
 
         return new AccessTokenResult(accessToken, expireAt);
     }

@@ -18,7 +18,7 @@ public class CreateTokenImpl implements CreateTokenPort {
     @Override
     public TokenResult createToken(String username) {
         String token = jwtServicePort.generateRefreshToken(username);
-        Instant expireAt = Instant.now().plusMillis(jwtServicePort.getRefreshTokenExpiration() * 100L); //The expiration time is in seconds.
+        Instant expireAt = Instant.now().plusMillis(jwtServicePort.getRefreshTokenExpiration());
         String jti = jwtServicePort.getJti(token);
         Long userId = jwtServicePort.getUserId(token);
 
