@@ -32,13 +32,13 @@ public class LoginImpl implements LoginPort {
             throw new InvalidCredentialsException("Invalid credentials");
         }
 
-        TokenResult token = tokenService.createToken(user.username());
-
         List<TokenResult> oldTokens = tokenService.getActiveUserToken(user.username());
 
         for (TokenResult oldToken : oldTokens) {
             tokenService.revokeToken(oldToken.jti());
         }
+
+        TokenResult token = tokenService.createToken(user.username());
 
         AccessTokenResult accessToken = tokenService.generateAccessToken(token.refreshToken());
 

@@ -28,8 +28,8 @@ public class GenerateAccessTokenImpl implements GenerateAccessTokenPort {
             throw new TokenAlreadyRevokedException("Token is revoked");
         }
 
-        if (jwtServicePort.validateToken(refreshToken.refreshToken())){
-            throw new InvalidTokenException("Token is valid");
+        if (!jwtServicePort.validateToken(refreshToken.refreshToken())){
+            throw new InvalidTokenException("Token is not valid");
         }
 
         String username = jwtServicePort.getUsername(refreshToken.refreshToken());

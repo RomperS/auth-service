@@ -19,7 +19,7 @@ public class GetActiveUserTokensImpl implements GetActiveUserTokensPort {
         List<Token> tokens = tokenRepositoryPort.findAllByUsername(username);
 
         List<Token> filteredToken = tokens.stream()
-                .filter(token -> !token.isRevoked() && (Instant.now().isAfter(token.expiredAt())))
+                .filter(token -> !token.isRevoked() && !(Instant.now().isAfter(token.expiredAt())))
                 .toList();
 
         return filteredToken.stream()
