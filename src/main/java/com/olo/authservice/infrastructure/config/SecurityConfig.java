@@ -38,7 +38,8 @@ public class SecurityConfig {
                 .userDetailsService(userDetailsService)
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**", "/swagger-ui/**", "/v3/api-docs/**", "/users/**").permitAll()
+                        .requestMatchers("/validation/login", "/validation/logout", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                        .requestMatchers("/validation/signup").hasAnyAuthority("ROLE_SUPER_ADMIN", "TITLE_SECRETARY")
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
