@@ -1,0 +1,4 @@
+### GET request to auth-service for permissions by token
+GET {{baseUrl}}/validation/permissions
+Authorization: Bearer {{active_token}}
+Content-Type: application/json
